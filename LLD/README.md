@@ -17,7 +17,7 @@
 #### Behavioral
 - [x] **Strategy Pattern**
 - [x] **Observer Pattern**
-- [ ] **Chain of Responsibility**
+- [x] **Chain of Responsibility**
 - [ ] **Null Object Pattern**
 - [ ] **State Pattern**
 - [ ] **Command Pattern**
