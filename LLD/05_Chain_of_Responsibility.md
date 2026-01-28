@@ -41,9 +41,169 @@ We will implement a Logging System with three levels: `INFO`, `DEBUG`, and `ERRO
 *   `DEBUG`: Prints info + debugging data.
 *   `ERROR`: Prints everything (Info + Debug + Error).
 
-*(See `LogProcessor_Chain.java` for the code)*
+*(See code below for the implementation logic)*
 
-## 6. Pros and Cons
+```java
+// 1. Abstract Handler
+abstract class LogProcessor {
+    public static int INFO = 1;
+    public static int DEBUG = 2;
+    public static int ERROR = 3;
+
+    protected LogProcessor nextLoggerProcessor;
+
+    LogProcessor(LogProcessor nextLoggerProcessor) {
+        this.nextLoggerProcessor = nextLoggerProcessor;
+    }
+
+    // Default implementation passes the request to the next handler
+    public void log(int logLevel, String message) {
+        if (nextLoggerProcessor != null) {
+            nextLoggerProcessor.log(logLevel, message);
+        }
+    }
+}
+
+// 2. Concrete Handlers
+class InfoLogProcessor extends LogProcessor {
+    InfoLogProcessor(LogProcessor next) { super(next); }
+
+    @Override
+    public void log(int logLevel, String message) {
+        if (logLevel == INFO) {
+            System.out.println("INFO: " + message);
+        } else {
+            super.log(logLevel, message);
+        }
+    }
+}
+
+class DebugLogProcessor extends LogProcessor {
+    DebugLogProcessor(LogProcessor next) { super(next); }
+
+    @Override
+    public void log(int logLevel, String message) {
+        if (logLevel == DEBUG) {
+            System.out.println("DEBUG: " + message);
+        } else {
+            super.log(logLevel, message);
+        }
+    }
+}
+
+class ErrorLogProcessor extends LogProcessor {
+    ErrorLogProcessor(LogProcessor next) { super(next); }
+
+    @Override
+    public void log(int logLevel, String message) {
+        if (logLevel == ERROR) {
+            System.out.println("ERROR: " + message);
+        } else {
+            super.log(logLevel, message);
+        }
+    }
+}
+
+// 3. Client Usage
+public class LoggingDemo {
+    public static void main(String[] args) {
+        // Construct the chain: Info -> Debug -> Error
+        LogProcessor logChain = new InfoLogProcessor(
+                                  new DebugLogProcessor(
+                                    new ErrorLogProcessor(null)
+                                  ));
+
+        System.out.println("--- Testing Log Chain ---");
+        logChain.log(LogProcessor.INFO, "Standard information message.");
+        logChain.log(LogProcessor.DEBUG, "Detailed debugger information.");
+        logChain.log(LogProcessor.ERROR, "Critical error: System failure!");
+    }
+}
+```
+
+## 6. Java Example: ATM Dispenser System
+
+This system handles withdrawal requests by breaking down the amount into denominations of $2000, $500, and $100.
+
+```java
+// 1. Abstract Handler
+abstract class CashHandler {
+    protected CashHandler nextHandler;
+
+    public CashHandler(CashHandler nextHandler) {
+        this.nextHandler = nextHandler;
+    }
+
+    public abstract void handle(int amount);
+}
+
+// 2. Concrete Handlers
+class TwoThousandHandler extends CashHandler {
+    public TwoThousandHandler(CashHandler next) { super(next); }
+
+    @Override
+    public void handle(int amount) {
+        if (amount >= 2000) {
+            int num = amount / 2000;
+            int remaining = amount % 2000;
+            System.out.println("Dispensing " + num + " notes of $2000");
+            if (remaining > 0 && nextHandler != null) nextHandler.handle(remaining);
+        } else if (nextHandler != null) {
+            nextHandler.handle(amount);
+        }
+    }
+}
+
+class FiveHundredHandler extends CashHandler {
+    public FiveHundredHandler(CashHandler next) { super(next); }
+
+    @Override
+    public void handle(int amount) {
+        if (amount >= 500) {
+            int num = amount / 500;
+            int remaining = amount % 500;
+            System.out.println("Dispensing " + num + " notes of $500");
+            if (remaining > 0 && nextHandler != null) nextHandler.handle(remaining);
+        } else if (nextHandler != null) {
+            nextHandler.handle(amount);
+        }
+    }
+}
+
+class OneHundredHandler extends CashHandler {
+    public OneHundredHandler(CashHandler next) { super(next); }
+
+    @Override
+    public void handle(int amount) {
+        if (amount >= 100) {
+            int num = amount / 100;
+            int remaining = amount % 100;
+            System.out.println("Dispensing " + num + " notes of $100");
+            if (remaining > 0 && nextHandler != null) nextHandler.handle(remaining);
+        } else if (nextHandler != null) {
+            nextHandler.handle(amount);
+        }
+    }
+}
+
+// 3. Client Usage
+public class ATMMain {
+    public static void main(String[] args) {
+        CashHandler atmChain = new TwoThousandHandler(
+                                 new FiveHundredHandler(
+                                   new OneHundredHandler(null)
+                                 ));
+
+        System.out.println("--- Requesting $3600 ---");
+        atmChain.handle(3600);
+        
+        System.out.println("\n--- Requesting $800 ---");
+        atmChain.handle(800);
+    }
+}
+```
+
+## 7. Pros and Cons
 
 | Pros | Cons |
 | :--- | :--- |

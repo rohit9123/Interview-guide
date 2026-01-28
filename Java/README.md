@@ -6,7 +6,7 @@
 - [x] **C++ to Java Transition**: Memory Model, Stack vs Heap, Pass-by-Value (See `01_Cpp_Transition_and_Memory.md`).
 - [ ] **Reflection**: Inspecting classes, private field access, performance cost.
 - [ ] **Dynamic Proxies**: `java.lang.reflect.Proxy`. The basis of Spring AOP.
-- [ ] **Annotations**: Creating custom annotations and Processors (Retention policies).
+- [ ] **Annotations**: Creating custom annotations and Processors (Retention policies)
 - [ ] **Generics**: Type Erasure, Bridge methods, Wildcards (`? extends T`, `? super T`).
 
 ## 2. JVM & Performance
