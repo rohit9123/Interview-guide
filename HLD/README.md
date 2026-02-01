@@ -3,14 +3,14 @@
 **Goal**: Understand how to scale systems to millions of users while maintaining reliability and performance.
 
 ## Phase 1: Core Fundamentals & Scaling
-- [ ] **Network Protocols**: HTTP, HTTPS, TCP/UDP 
-- [ ] **How DNS works?**: System Design of Domain Name System
-- [ ] **Scalability**: Vertical vs Horizontal Scaling
-- [ ] **Scale from ZERO to MILLION User** (35min)
-- [ ] **CAP Theorem**: Consistency, Availability, Partition Tolerance
-- [ ] **Consistent Hashing**: Fundamental for distributed systems (32min)
-- [ ] **Back-Of-The-Envelope Estimation**: Essential for design interviews
-- [ ] **Availability**: High Availability (Active-Passive & Active-Active Architecture)
+- [x] **Network Protocols**: HTTP, HTTPS, TCP/UDP 
+- [x] **How DNS works?**: System Design of Domain Name System
+- [x] **Scalability**: Vertical vs Horizontal Scaling
+- [x] **Scale from ZERO to MILLION User** (35min)
+- [x] **CAP Theorem**: Consistency, Availability, Partition Tolerance
+- [x] **Consistent Hashing**: Fundamental for distributed systems (32min)
+- [x] **Back-Of-The-Envelope Estimation**: Essential for design interviews
+- [x] **Availability**: High Availability (Active-Passive & Active-Active Architecture)
 
 ## Phase 2: Traffic Management & Building Blocks
 - [ ] **Load Balancers**: Algorithms (Round Robin, Least Conn, etc.)

@@ -3,9 +3,9 @@
 **Goal**: Go beyond CRUD to understand database internals, performance tuning, and advanced SQL.
 
 ## Phase 1: Relational Foundations
-- [ ] ** ACID Properties**: Atomicity, Consistency, Isolation, Durability
-- [ ] **Isolation Levels**: Read Uncommitted, Read Committed, Repeatable Read, Serializable
-- [ ] **Data Types**: JSONB vs JSON, HSTORE, Arrays, Enums
+- [x] ** ACID Properties**: Atomicity, Consistency, Isolation, Durability
+- [x] **Isolation Levels**: Read Uncommitted, Read Committed, Repeatable Read, Serializable
+- [x] **Data Types**: JSONB vs JSON, HSTORE, Arrays, Enums
 - [ ] **Relational Schema Design**: Normalization (1NF, 2NF, 3NF, BCNF)
 
 ## Phase 2: Querying & Advanced SQL
