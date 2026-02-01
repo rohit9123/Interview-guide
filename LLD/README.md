@@ -18,7 +18,7 @@
 - [x] **Strategy Pattern**
 - [x] **Observer Pattern**
 - [x] **Chain of Responsibility**
-- [ ] **Null Object Pattern**
+- [x] **Null Object Pattern**
 - [ ] **State Pattern**
 - [ ] **Command Pattern**
 - [ ] **Iterator Pattern**

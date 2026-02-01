@@ -1,7 +1,5 @@
 # Advanced Java Roadmap
 
-**[Full Learning Roadmap (47 Topics)](file:///Users/mahak/Desktop/rohit notes/Java/Roadmap.md)**
-
 **Focus**: Deep internals, Framework magic (Spring/Hibernate under the hood), and Concurrency.
 
 ## 1. Core Advanced & Internals
